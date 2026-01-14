@@ -1,4 +1,5 @@
 import sys
+from terminaltables import AsciiTable
 
 from src.scan_file import *
 from src.utils import *
@@ -47,7 +48,6 @@ def terminal_menu():
 [1]...Scan all files and folders
 [2]...Scan all files in all subfolders
 [3]...Scan only folders
-[4]...Settings
 """)
 
 # Main
@@ -64,16 +64,25 @@ def main():
             else:
                 path = Path(input_path)
                 scan = scan_files_and_folders(path)
-            print(scan)
+            print_results(scan)
         elif menu_choice == "2":
-            print("\nYou pressed 2: Scan all files in all subfolders\n")
-            break
+            input_path = input("\nEnter the path to scan: (Press ENTER to use current directory)")
+            if input_path == "":
+                path = Path.cwd()
+                scan = scan_files_in_subfolders(path)
+            else:
+                path = Path(input_path)
+                scan = scan_files_in_subfolders(path)
+            print_results(scan)
         elif menu_choice == "3":
-            print("\nYou pressed 3: Scan only folders\n")
-            break
-        elif menu_choice == "4":
-            print("\nYou pressed 4: Settings\n")
-            break
+            input_path = input("\nEnter the path to scan: (Press ENTER to use current directory)")
+            if input_path == "":
+                path = Path.cwd()
+                scan = scann_only_folders(path)
+            else:
+                path = Path(input_path)
+                scan = scann_only_folders(path)
+            print_results(scan)
         else:
             pass
 
