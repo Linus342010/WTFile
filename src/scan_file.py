@@ -59,16 +59,15 @@ def scann_only_folders(path):
 
 
 def format_size(size):
-    """Formatiert die Größe in Byte, KB, MB oder GB."""
     for unit in ['B', 'KB', 'MB', 'GB']:
         if size < 1024:
             return f"{size:.2f} {unit}"
         size /= 1024
-    return f"{size:.2f} TB"  # falls es extrem große Dateien gibt
+    return f"{size:.2f} TB"
 
 
 def print_results(results):
-    table_data = [['Name', 'Größe', 'Typ']]
+    table_data = [['name', 'size', 'type']]
 
     for name, size, typ in results:
         table_data.append([name, format_size(size), typ])

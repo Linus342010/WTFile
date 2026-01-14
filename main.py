@@ -2,7 +2,6 @@ import sys
 from terminaltables import AsciiTable
 
 from src.scan_file import *
-from src.utils import *
 
 # menu input
 try:
